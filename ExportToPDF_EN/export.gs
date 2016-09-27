@@ -5,6 +5,7 @@ function isInTab(i, sheets_export) {
     if (i == sheets_export[j])                                                                                      // Checks if "i" is equal of the value curent value of "sheets_export". If yes :
       return (0);                                                                                                     // Return 0 at the previous function
   }
+  return (1);                                                                                                     // Return 1 at the previous function
 }
 
 function exportToPDF(sheets_export) {
