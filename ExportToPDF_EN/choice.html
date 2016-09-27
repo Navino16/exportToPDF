@@ -50,8 +50,8 @@
         num_elem++;
       }
     }
-    google.script.run.withSuccessHandler(createInputArea).getName();                                                            // Run the function "CreateInputZone" if the function "getName" successful
-    google.script.run.withSuccessHandler(createList).getListSheet();                                                            // Run the function "CreateList" if the function "getListSheet" successful
+    google.script.run.withSuccessHandler(createInputArea).getName();                                                            // Run the function "createInputZone" if the function "getName" successful
+    google.script.run.withSuccessHandler(createList).getListSheet();                                                            // Run the function "createList" if the function "getListSheet" successful
   </script>
   <font>Please enter the PDF file name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                           <!-- Define the font tag with some text and some spaces after -->
     <input id="ss_name" form="sheets" type="textarea" value="PDF file name" name="sheet"><br>                                   <!-- Define an textarea with the default value "PDF file name" (changed by the JS script) and a line break after -->
