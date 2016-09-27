@@ -42,11 +42,11 @@
       createElem("all", "All\t\t");                                                                                             // Call the function "createElem" for create a new input tag with the value "all" and the text "All\t\t" (\t is a tabulation)
       var num_elem = 2;                                                                                                         // Define a variable of type number named "num_elem" and set it at 2.
       for (var i = 0; i < list.length; i++) {                                                                                   // Loop until all the sheets have not been covered
-        if (num_elem % 5 == 0) {                                                                                                // Checks if the remainder of the division by 5 is 0. If yes :
-          createElem(i, list[i] + "\n");                                                                                          // Call the function "createElem" for create a new input tag with the value of "i" and the text of list[i] + "\n" (\n is a newline)
+        if (num_elem % 5 == 0) {                                                                                                  // Checks if the remainder of the division by 5 is 0. If yes :
+          createElem(i, list[i] + "\n");                                                                                            // Call the function "createElem" for create a new input tag with the value of "i" and the text of list[i] + "\n" (\n is a newline)
         }
-        else                                                                                                                    // else
-          createElem(i, list[i] + "\t");                                                                                          // Call the function "createElem" for create a new input tag with the value of "i" and the text of list[i] + "\t" (\t is a tabulation)
+        else                                                                                                                      // else
+          createElem(i, list[i] + "\t");                                                                                            // Call the function "createElem" for create a new input tag with the value of "i" and the text of list[i] + "\t" (\t is a tabulation)
         num_elem++;
       }
     }
