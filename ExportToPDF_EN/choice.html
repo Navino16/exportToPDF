@@ -10,9 +10,9 @@
       var j = 1;                                                                                                                // Define a variable of type number named "j" and set it at 1.
       sheets[0] = values[0].value;                                                                                              // Set the first value of "sheets" with the name of the PDF
       for (var i=1; i< values.length;i++) {                                                                                     // Loop until all the checkbox have not been covered
-        if (values[i].checked) {                                                                                                // Checks if the current checkbox is checked. If yes :
-          sheets[j] = values[i].value;                                                                                          // Set "sheets[j]" with the value of the current checkbox.
-          j++;                                                                                                                  // Increases by 1 the value of "j"
+        if (values[i].checked) {                                                                                                  // Checks if the current checkbox is checked. If yes :
+          sheets[j] = values[i].value;                                                                                              // Set "sheets[j]" with the value of the current checkbox.
+          j++;                                                                                                                      // Increases by 1 the value of "j"
         }
       }
       if (j > 1) {                                                                                                              // If at least 1 checkbox have been checked :
