@@ -10,7 +10,7 @@ To use this add-on, select the menu item **ExportToPDF > Export To PDF**
 When the window opens, enter the name of the PDF to generate (by default it is the name of the document). Then select all the sheets to export (if you select "All", you do not need to check the other sheet) and then click "Export" (Please note, you must select at least one sheet).
 After a few seconds you should see a window open showing where is the PDF and it's name.
 
-Started September 26, 2016 and ended September 27, 2016. **Last Update on 09/27/2016**
+Started September 26, 2016 and ended September 27, 2016. **Last Update on 09/28/2016**
 
 If you want to contribute to the project, you can make changes or corrections to the project and offer me. If they are accepted, you will be added to the file contributors.
 It would initially turn this "bound script" in "standalone script" (to make it more easily installable) and why not improve desing HTML pages
@@ -18,13 +18,14 @@ It would initially turn this "bound script" in "standalone script" (to make it m
 # exportToPDF - Francais
 
 ExortToPDF est un script pour exporter un fichier “Google sheet” (spreadsheet), ou seulements quelques pages en format PDF.
+
 J'ai écrit ce script suite à un manque réel lors de l'exportation de fichiers “Google sheet”. Ce script vous permet d'exporter au format PDF ce type de fichier ou seulement quelques feuilles de celui-ci. L'avantage de ce script rapport aux autres déjà existants ? Il effectue aucune copie du fichier ou des feuilles, il peut exporter seulement certaines feuilles sélectionnées et surtout elle maintient les formules existantes lors de l'exportation !
 
-Pour l’ajouter à un “Google sheet”, ouvrez le et sélectionnez le menu **Outil > Éditeur de script**. Supprimez tout code dans l'éditeur de script et collez-y le contenu de chaque fichier présent dans le dossier ExportToPDF_EN. Si vous voulez respecter mon architecture de projet, vous pouvez créer de nouveaux fichiers de script dans le projet en sélectionnant  le menu **Fichier > Nouveau > Fichier script**, entrez le nom que vous voulez et cliquez sur OK. Attention aux fichiers HTML, il est obligatoire de créer un nouveau fichier html en sélectionnant le menu **Fichier > Nouveau > Fichier HTML** et coller le code HTML dedans.
+Pour l’ajouter à un “Google sheet”, ouvrez le et sélectionnez le menu **Outil > Éditeur de script**. Supprimez tout code dans l'éditeur de script et collez-y le contenu de chaque fichier présent dans le dossier **ExportToPDF_FR**. Si vous voulez respecter mon architecture de projet, vous pouvez créer de nouveaux fichiers de script dans le projet en sélectionnant  le menu **Fichier > Nouveau > Fichier script**, entrez le nom que vous voulez et cliquez sur OK. Attention aux fichiers HTML, il est obligatoire de créer un nouveau fichier html en sélectionnant le menu **Fichier > Nouveau > Fichier HTML** et coller le code HTML dedans.
 
 Pour utiliser ce module, sélectionnez le menu **Exporter en PDF > Exporter en PDF**. Lorsque la fenêtre apparaît, entrez le nom du fichier PDF a générer (par défaut, il s’agit du nom du “Google sheet”). Sélectionnez ensuite toutes les feuilles à exporter (si vous sélectionnez "All", vous n’avez pas besoin de cocher les autres feuilles), puis cliquez sur "Exporter" (Attention, vous devez sélectionner au moins une feuille). Après quelques secondes, vous devriez voir une fenêtre s’ouvrir indiquant où est le PDF et son nom.
 
-Commencé le 26 Septembre 2016 et terminée le 27 Septembre 2016. Dernière mise à jour le 27.09.2016.
+Commencé le 26 Septembre 2016 et terminée le 27 Septembre 2016. **Dernière mise à jour le 28.09.2016.**
 
 Si vous souhaitez contribuer au projet, vous pouvez apporter des modifications ou des corrections au projet et me les soumettre. Si elles sont acceptées, vous serez ajouté dans la liste des contributeurs.
 Dans un premier temps il faudrait transformer ce script en script "standalone" (pour le rendre plus facilement installable) et pourquoi  pas améliorer le design des pages HTML.
