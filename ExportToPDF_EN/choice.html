@@ -2,66 +2,20 @@
 <html>
   <head>
     <base target="_top">
+    <?!= HtmlService.createHtmlOutputFromFile('stylesheet').getContent(); ?>                                                    <!-- Include content of stylesheet page in HTML page -->
+    <?!= HtmlService.createHtmlOutputFromFile('choiceScript.js').getContent(); ?>                                               <!-- Include content of choiceScript.js page in HTML page -->
   </head>
   <body>
-  <script type="text/javascript">
-    function returnValue(values) {
-      var sheets = [];                                                                                                          // Defined an array variable named "sheets".
-      var j = 1;                                                                                                                // Define a variable of type number named "j" and set it at 1.
-      sheets[0] = values[0].value;                                                                                              // Set the first value of "sheets" with the name of the PDF
-      for (var i=1; i< values.length;i++) {                                                                                     // Loop until all the checkbox have not been covered
-        if (values[i].checked) {                                                                                                  // Checks if the current checkbox is checked. If yes :
-          sheets[j] = values[i].value;                                                                                              // Set "sheets[j]" with the value of the current checkbox.
-          j++;                                                                                                                      // Increases by 1 the value of "j"
-        }
-      }
-      if (j > 1) {                                                                                                              // If at least 1 checkbox have been checked :
-        google.script.run.exportToPDF(sheets);                                                                                    // Call the function "exportToPDF" for export the right sheet(s) in PDF
-        google.script.host.close();                                                                                               // Close the pop-up window
-      }
-    }
-    
-    function createElem(value, text) {
-      var formSheet = document.getElementById("sheets");                                                                        // Get the element wit the ID "sheets" in the HTML page
-      var before = document.getElementById("sheets").lastChild;                                                                 // Get the last element between the 2 tags with the ID "sheets"
-      var x = document.createElement("input");                                                                                  // Create an "input" tag
-      x.setAttribute("type", "checkbox");                                                                                       // Set the "type" attribute of the tag to "checkbox"
-      x.setAttribute("name", "sheet");                                                                                          // Set the "name" attribute of the tag to "sheet"
-      x.setAttribute("value", value);                                                                                           // Set the "value" attribute of the tag with the value of "value"
-      var text2 = document.createTextNode(text);                                                                                // Define a variable named "text2". It's a text node with the content of "text"
-      formSheet.insertBefore(x, before);                                                                                        // Insert in the HTML page the input tag before the last child of the form
-      formSheet.insertBefore(text2, before);                                                                                    // Insert in the HTML page the text node before the last child of the form (and after the checkbox)
-    }
-    
-    function createInputArea(name) {
-      if (name != "")                                                                                                           // Checks if "name" is not empty. If yes :
-        var inp = document.getElementById("ss_name").value = name;                                                                // Set the value of the tag with ID "ss_name" with the value of "name"
-    }
-    
-    function createList(list) {
-      createElem("all", "All\t\t");                                                                                             // Call the function "createElem" for create a new input tag with the value "all" and the text "All\t\t" (\t is a tabulation)
-      var num_elem = 2;                                                                                                         // Define a variable of type number named "num_elem" and set it at 2.
-      for (var i = 0; i < list.length; i++) {                                                                                   // Loop until all the sheets have not been covered
-        if (num_elem % 5 == 0) {                                                                                                  // Checks if the remainder of the division by 5 is 0. If yes :
-          createElem(i, list[i] + "\n");                                                                                            // Call the function "createElem" for create a new input tag with the value of "i" and the text of list[i] + "\n" (\n is a newline)
-        }
-        else                                                                                                                      // else
-          createElem(i, list[i] + "\t");                                                                                            // Call the function "createElem" for create a new input tag with the value of "i" and the text of list[i] + "\t" (\t is a tabulation)
-        num_elem++;
-      }
-    }
-    google.script.run.withSuccessHandler(createInputArea).getName();                                                            // Run the function "createInputZone" if the function "getName" successful
-    google.script.run.withSuccessHandler(createList).getListSheet();                                                            // Run the function "createList" if the function "getListSheet" successful
-  </script>
+  <h2> Export to PDF </h2><br>
   <font>Please enter the PDF file name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                           <!-- Define the font tag with some text and some spaces after -->
-    <input id="ss_name" form="sheets" type="textarea" value="PDF file name" name="sheet"><br>                                   <!-- Define an textarea with the default value "PDF file name" (changed by the JS script) and a line break after -->
-    Please select one or more sheet(s):                                                                                         <!-- Some text in the font tag -->
-    <pre><form id="sheets">                                                                                                     <!-- Define a form tag with the ID "sheets" and a pre tag. All text between the 2 pre tag is not compressed (the tabulation and multi space are not transform in 1 space) -->
-    </form></pre>                                                                                                               <!-- Close the form and pre tags>  -->
+    <input id="ss_name" form="sheets" type="textarea" value="PDF file name" name="sheet"><br><br>                               <!-- Define an textarea with the default value "PDF file name" (changed by the JS script) and a line break after -->
+    Please select one or more sheet(s):<br><br>                                                                                 <!-- Some text in the font tag -->
+    <form id="sheets"><table id="table">                                                                                        <!-- Define a form tag with the ID "sheets" and a table tag. All the possiblity of the form are stock in the table -->
+    </table></form>                                                                                                             <!-- Close the form and table tags>  -->
     <center><input form="sheets" type="button" value="Export" onClick="returnValue(this.form.sheet)"></center>                  <!-- Define a button for submit the form. On submit call the function "returnValue" with in parameter all the input with the name "sheet" -->
   </font>                                                                                                                       <!-- Close the font tag -->
   </body>
 </html>
 
 <!-- Made by JAUNET Nathan. Started September 26, 2016 and ended September 27, 2016 -->
-<!-- Last Update on 09/27/16 -->
+<!-- Last Update on 09/29/16 -->
