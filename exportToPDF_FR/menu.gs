@@ -1,5 +1,5 @@
 function choice() {
-  var html = HtmlService.createTemplateFromFile('choice').evaluate()                                         // Creation de la page HTML "interface"
+  var html = HtmlService.createTemplateFromFile('choice').evaluate()                                         // Creation de la page HTML "choice"
   .setSandboxMode(HtmlService.SandboxMode.NATIVE)                                                            // Restrictions pour la page HTML (protège l'utilisateur)
   .setWidth(700)                                                                                             // Définition de sa largeur
   .setHeight(270);                                                                                           // Défini la hauteur
@@ -7,7 +7,7 @@ function choice() {
 }
 
 function help() {
-  var html = HtmlService.createTemplateFromFile('help').evaluate()                                           // Création de la page HTML "aide"
+  var html = HtmlService.createTemplateFromFile('help').evaluate()                                           // Création de la page HTML "help"
   .setSandboxMode(HtmlService.SandboxMode.NATIVE)                                                            // Restrictions pour la page HTML (protège l'utilisateur)
   .setTitle('Aide')                                                                                          // Définition du nom de la page
   .setWidth(300);                                                                                            // Définition de sa largeur
