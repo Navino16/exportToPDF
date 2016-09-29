@@ -51,13 +51,13 @@
   }
     
   function createList(list) {
-    createElem("all", "Toutes\t\t", true);                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "all" et pour texte "Toutes\t" (\t est une tabulation)
+    createElem("all", "Toutes", true);                                                                                        // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "all" et pour texte "Toutes\t" (\t est une tabulation)
     var num_elem = 1;                                                                                                         // Défini la variable de type nombre nommée "num_elem" et la met à 2.
     for (var i = 0; i < list.length; i++) {                                                                                   // Boucle tant que toutes les feuilles n'ont pas été parcourue
     if (num_elem % 5 == 0) {                                                                                                  // Vérifie si le restde de la division par 5 est 0. Si oui :
       createElem(i, list[i], true);                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i" et pour texte list[i] + "\n" (\n est un saut de ligne)
     }
-    else                                                                                                                     // sinon
+    else                                                                                                                      // sinon
       createElem(i, list[i], false);                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i" et pour texte list[i] + "\t" (\t est une tabulation)
     num_elem++;
     }
