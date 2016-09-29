@@ -1,0 +1,68 @@
+<script type="text/javascript">
+  var id_line = 0;
+  var id_cell = 0;
+  var cur_line_id = "";
+  var cur_cell_id = "";
+  function returnValue(values) {
+    var sheets = [];                                                                                                          // Defined an array variable named "sheets".
+    var j = 1;                                                                                                                // Define a variable of type number named "j" and set it at 1.
+    sheets[0] = values[0].value;                                                                                              // Set the first value of "sheets" with the name of the PDF
+    for (var i=1; i< values.length;i++) {                                                                                     // Loop until all the checkbox have not been covered
+      if (values[i].checked) {                                                                                                  // Checks if the current checkbox is checked. If yes :
+        sheets[j] = values[i].value;                                                                                              // Set "sheets[j]" with the value of the current checkbox.
+        j++;                                                                                                                      // Increases by 1 the value of "j"
+      }
+    }
+    if (j > 1) {                                                                                                              // If at least 1 checkbox have been checked :
+      google.script.run.exportToPDF(sheets);                                                                                    // Call the function "exportToPDF" for export the right sheet(s) in PDF
+      google.script.host.close();                                                                                               // Close the pop-up window
+    }
+  }
+    
+  function createElem(value, text, new_line) {
+    var formSheet = document.getElementById("sheets");                                                                        // Récupère la balise avec l'ID "sheets" dans la page HTML
+    if (new_line === true) {                                                                                                  // Vérifie si new_line est vrai. Si oui :
+      var line = document.createElement("tr");                                                                                  // Créé une balise "tr"
+      line.setAttribute("id", "line" + id_line);                                                                                // Défini l'attribut "id" de la balise à "line" + id_line
+      cur_line_id = "line" + id_line;                                                                                           // Défini "cur_line_id" avec la valeur "line" + id_line
+      document.getElementById("table").appendChild(line);                                                                       // Récupère la balise avec l'id "table" et y ajoute avant la balise fermante la balise "tr" stockée dans line
+      id_line++;                                                                                                                // Augmente de 1 la valeur de id_line
+    }
+    var cell = document.createElement("td");                                                                                  // Créé une balise "td"
+    cell.setAttribute("id", "cell"+ id_cell);                                                                                 // Défini l'attribut "id" de la balise à "cell" + id_cell
+    cur_cell_id = "cell"+ id_cell;                                                                                            // Défini "cur_cell_id" avec la valeur "cell" + id_line
+    document.getElementById(cur_line_id).appendChild(cell);                                                                   // Récupère la balise avec l'id "cur_line_id" et y ajoute avant la balise fermante la balise "td" stockée dans cell
+    id_cell++;                                                                                                                // Augmente de 1 la valeur de id_cell
+    
+    var x = document.createElement("input");                                                                                  // Créé une balise "input"
+    x.setAttribute("type", "checkbox");                                                                                       // Défini l'attribut "type" de la balise à "checkbox"
+    x.setAttribute("name", "sheet");                                                                                          // Défini l'attribut "name" de la balise à "sheet"
+    x.setAttribute("value", value);                                                                                           // Défini l'attribut "value" de la balise avec la valeur de "value"
+    var text2 = document.createTextNode(text);                                                                                // Défini une variable nommée "text2". C'est une node de texte avec le contenu de "text"
+    document.getElementById(cur_cell_id).appendChild(x);                                                                      // Récupère la balise avec l'id "cur_cell_id" et y ajoute avant la balise fermante la balise "input" stockée dans x
+    document.getElementById(cur_cell_id).appendChild(text2);                                                                                    // Insert in the HTML page the text node before the last child of the form (and after the checkbox)
+    }
+    
+  function createInputArea(name) {
+    if (name != "")                                                                                                           // Checks if "name" is not empty. If yes :
+      var inp = document.getElementById("ss_name").value = name;                                                                // Set the value of the tag with ID "ss_name" with the value of "name"
+    }
+    
+  function createList(list) {
+    createElem("all", "All", true);                                                                                           // Call the function "createElem" for create a new input tag with the value "all" and the text "All"
+    var num_elem = 1;                                                                                                         // Define a variable of type number named "num_elem" and set it at 1.
+    for (var i = 0; i < list.length; i++) {                                                                                   // Loop until all the sheets have not been covered
+      if (num_elem % 5 == 0) {                                                                                                  // Checks if the remainder of the division by 5 is 0. If yes :
+        createElem(i, list[i], true);                                                                                             // Call the function "createElem" for create a new input tag with the value of "i" and the text of list[i]
+      }
+      else                                                                                                                      // else
+        createElem(i, list[i], false);                                                                                            // Call the function "createElem" for create a new input tag with the value of "i" and the text of list[i]
+      num_elem++;
+    }
+  }
+  google.script.run.withSuccessHandler(createInputArea).getName();                                                            // Run the function "createInputZone" if the function "getName" successful
+  google.script.run.withSuccessHandler(createList).getListSheet();                                                            // Run the function "createList" if the function "getListSheet" successful
+</script>
+
+<!-- Made by JAUNET Nathan. Started September 26, 2016 and ended September 27, 2016 -->
+<!-- Last Update on 09/29/16 -->
