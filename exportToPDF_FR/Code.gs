@@ -17,10 +17,7 @@ function start() {
 function getListSheet() {
   var tab = [];                                                                                                 // Défini une variable de type tableau nommée "tab".
   for (var i = 0; i < sheets.length; i++) {                                                                     // Boucle tant que toutes les feuilles n'ont pas été parcourue
-    if (i < 10)                                                                                                   // Vérifie si "i" est plus petit que 10. Si oui :
-      tab[i] = "Feuille 0" + (i + 1);                                                                               // Met dans "tab[i]" le numéro de feuille avec un "0" devant
-    else                                                                                                          // sinon
-      tab[i] = "Feuille " + (i + 1);                                                                                // Met dans tab[i] le numéro de la feuille
+    tab[i] = sheets[i].getName();                                                                               // Stock dans tab[i] le nom de la feuille actuelle
   }
   return (tab);                                                                                                 // Retourne le tableau à la fonction précédente
 }
@@ -30,4 +27,4 @@ function getName() {
 }
 
 // Fait par JAUNET Nathan. Commencé le 26 septembre 2016 et terminé le 27 septembre 2016
-// Dernière mise à jour le 27/09/2016
+// Dernière mise à jour le 29/09/2016
