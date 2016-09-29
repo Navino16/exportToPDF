@@ -2,66 +2,20 @@
 <html>
   <head>
     <base target="_top">
+    <?!= HtmlService.createHtmlOutputFromFile('stylesheet').getContent(); ?>                                                    <!-- Inclus la page stylesheet dans la page HTML -->
+    <?!= HtmlService.createHtmlOutputFromFile('choiceScript.js').getContent(); ?>                                               <!-- Inclus la page choiceScript.js dans la page HTML -->
   </head>
   <body>
-  <script type="text/javascript">
-    function returnValue(values) {
-      var sheets = [];                                                                                                          // Défini une variable de type tableau nommée "sheets".
-      var j = 1;                                                                                                                // Défini une variable de type nombre nommée "j" et la met à 1.
-      sheets[0] = values[0].value;                                                                                              // Remplis la première valeur de "sheets" avec le nom du PDF
-      for (var i=1; i< values.length;i++) {                                                                                     // Boucle tant que toutes les cases à cocher n'ont pas été parcourues
-        if (values[i].checked) {                                                                                                  // Vérifie si la case à cocher actuelle est cochée. Si oui :
-          sheets[j] = values[i].value;                                                                                              // Remplis "sheets[j]" Avec la valeur de la case à cocher actuelle.
-          j++;                                                                                                                      // Augmente de 1 la valeur de "j"
-        }
-      }
-      if (j > 1) {                                                                                                              // Si au moins 1 boite à cochée a été cochée, alors :
-        google.script.run.exportToPDF(sheets);                                                                                    // Appel la fonction "exportToPDF" pour exporter la (les) bonne(s) feuille(s) en PDF
-        google.script.host.close();                                                                                               // Ferme la fenêtre pop-up
-      }
-    }
-    
-    function createElem(value, text) {
-      var formSheet = document.getElementById("sheets");                                                                        // Récupère la balise avec l'ID "sheets" dans la page HTML
-      var before = document.getElementById("sheets").lastChild;                                                                 // Récupère le dernier élément entre les 2 balise avec l'ID "sheets"
-      var x = document.createElement("input");                                                                                  // Créé une balise "input"
-      x.setAttribute("type", "checkbox");                                                                                       // Défini l'attribut "type" de la balise à "checkbox"
-      x.setAttribute("name", "sheet");                                                                                          // Défini l'attribut "name" de la balise à "sheet"
-      x.setAttribute("value", value);                                                                                           // Défini l'attribut "value" de la balise avec la valeur de "value"
-      var text2 = document.createTextNode(text);                                                                                // Défini une variable nommée "text2". C'est une node de texte avec le contenu de "text"
-      formSheet.insertBefore(x, before);                                                                                        // Insert dans la page HTML la balise input avant la dernière balise du formulaire (balise form)
-      formSheet.insertBefore(text2, before);                                                                                    // Insert dans la page HTMLla node de texte avant la dernière balise du formulaire (balise form) et après la boite à cocher
-    }
-    
-    function createInputArea(name) {
-      if (name != "")                                                                                                           // Vérifie si "name" n'est pas vide. Si oui :
-        var inp = document.getElementById("ss_name").value = name;                                                                // Définie l'attribut "value" de la balise avec l'ID "ss_name" avec la valeur de "name"
-    }
-    
-    function createList(list) {
-      createElem("all", "Toutes\t");                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "all" et pour texte "Toutes\t" (\t est une tabulation)
-      var num_elem = 2;                                                                                                         // Défini la variable de type nombre nommée "num_elem" et la met à 2.
-      for (var i = 0; i < list.length; i++) {                                                                                   // Boucle tant que toutes les feuilles n'ont pas été parcourue
-        if (num_elem % 5 == 0) {                                                                                                  // Vérifie si le restde de la division par 5 est 0. Si oui :
-          createElem(i, list[i] + "\n");                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i" et pour texte list[i] + "\n" (\n est un saut de ligne)
-        }
-        else                                                                                                                      // sinon
-          createElem(i, list[i] + "\t");                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i" et pour texte list[i] + "\t" (\t est une tabulation)
-        num_elem++;
-      }
-    }
-    google.script.run.withSuccessHandler(createInputArea).getName();                                                            // Execute la fonction "createInputZone" si la fonction "getName" réussie
-    google.script.run.withSuccessHandler(createList).getListSheet();                                                            // Execute la fonction "createList" si la fonction "getListSheet" réussie
-  </script>
+  <h2>Exporter au format PDF</h2><br>
   <font>Merci d'entrer le nom du PDF :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                            <!-- Défini la balise font avec du texte et des espaces après -->
-    <input id="ss_name" form="sheets" type="textarea" value="Nom du fichier PDF" name="sheet"><br>                              <!-- Défini une zone de texte avec la valeur par défaut "Nom du fichier PDF" (changé par le script JS) et un saut de ligne après -->
-    Merci de selectionner une ou plusieurs feuille(s) :                                                                         <!-- Du text dans la balise font -->
-    <pre><form id="sheets">                                                                                                     <!-- Défini une balise form (formulaire) avec l'ID "sheets" et la balise pre.Tout le texte entre les 2 balise pre n'est pas compressé (les tabulations et les multi espaces ne se transforment pas en 1 espace) -->
-    </form></pre>                                                                                                               <!-- Ferme les balises form et pre  -->
+    <input id="ss_name" form="sheets" type="textarea" value="Nom du fichier PDF" name="sheet"><br><br>                          <!-- Défini une zone de texte avec la valeur par défaut "Nom du fichier PDF" (changé par le script JS) et un saut de ligne après -->
+    Merci de selectionner une ou plusieurs feuille(s) :<br><br>                                                                 <!-- Du text dans la balise font suivis d'un saut de ligne -->
+    <form id="sheets"><table id="table">                                                                                        <!-- Défini une balise form (formulaire) avec l'ID "sheets" et la balise table. Les possibilitées du formulaires sont stockées dans un tableau dynamique (largeur et nombre de lignes variable selon le doc) -->
+    </table></form>                                                                                                             <!-- Ferme les balises form et table  -->
     <center><input form="sheets" type="button" value="Exporter" onClick="returnValue(this.form.sheet)"></center>                <!-- Défini un bouton pour valider le formulaire. A l'envoie, appel la fonction "returnValue" avec en paramètre les valeurs de chaque balise avec le nom "sheet" dans le formulaire -->
   </font>                                                                                                                       <!-- Ferme la balise font -->
   </body>
 </html>
 
 <!-- Fait par JAUNET Nathan. Commencé le 26 septembre 2016 et terminé le 27 septembre 2016 -->
-<!-- Dernière mise à jour le 28/09/2016 -->
+<!-- Dernière mise à jour le 29/09/2016 -->
