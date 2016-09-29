@@ -26,8 +26,8 @@ function exportToPDF(sheets_export) {
   for (i = 0; i < sheets.length; i++) {                                                                           // Boucle tant que toutes les feuilles n'ont pas été parcourue
     sheets[i].showSheet();                                                                                          // Affiche dans le fichier la feuille actuelle
   }
-  ui.alert("The PDF file is stored in the "+ folder + " folder whit the name \"" + sheets_export[0] + "\"");      // Ouvre une fenêtre pop-up pour indiquer où le fichier est stocker et son nom
+  ui.alert("Le fichier PDF est stocké dans le dossier "+ folder + " avec le nom \"" + sheets_export[0] + "\"");   // Ouvre une fenêtre pop-up pour indiquer où le fichier est stocker et son nom
 }
 
 // Fait par JAUNET Nathan. Commencé le 26 septembre 2016 et terminé le 27 septembre 2016
-// Dernière mise à jour le 27/09/2016
+// Dernière mise à jour le 29/09/2016
