@@ -1,16 +1,18 @@
 function choice() {
-  var html = HtmlService.createHtmlOutputFromFile('choice')                                                  // Créé la page HTML nommée "interface"
-  .setWidth(570)                                                                                             // Défini la largeur
-  .setHeight(160);                                                                                           // Défini la hauteur
-  ui.showModalDialog(html, "Exporter en PDF");                                                               // Montre la page HTML dans une fenêtre pop-up avec le nom "Exporter en PDF"
+  var html = HtmlService.createTemplateFromFile('choice').evaluate()                                         // Creation de la page HTML "interface"
+  .setSandboxMode(HtmlService.SandboxMode.NATIVE)                                                            // Restrictions pour la page HTML (protège l'utilisateur)
+  .setWidth(700)                                                                                             // Définition de sa largeur
+  .setHeight(270);                                                                                           // Défini la hauteur
+  ui.showModalDialog(html, " ");                                                                             // Montre la page HTML dans une fenêtre pop-up avec le nom " "
 }
 
 function help() {
-  var html = HtmlService.createHtmlOutputFromFile('help')                                                    // Créé la page HTML nommée "help"
-  .setTitle('Aide')                                                                                          // Défini le nom de la fenêtre pop-up
-  .setWidth(300);                                                                                            // Défini sa largeur
-  ui.showSidebar(html);                                                                                      // Montre la page HTML dans une fenêtre sur le côté du document
+  var html = HtmlService.createTemplateFromFile('help').evaluate()                                           // Création de la page HTML "aide"
+  .setSandboxMode(HtmlService.SandboxMode.NATIVE)                                                            // Restrictions pour la page HTML (protège l'utilisateur)
+  .setTitle('Aide')                                                                                          // Définition du nom de la page
+  .setWidth(300);                                                                                            // Définition de sa largeur
+  ui.showSidebar(html);                                                                                      // Affiche la page html dans une sidebar
 }
 
 // Fait par JAUNET Nathan. Commencé le 26 septembre 2016 et terminé le 27 septembre 2016
-// Dernière mise à jour le 27/09/2016
+// Dernière mise à jour le 29/09/2016
