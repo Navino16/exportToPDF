@@ -1,0 +1,70 @@
+<!-- Script pour la page HTML choice -->
+
+<script type="text/javascript">
+  var id_line = 0;
+  var id_cell = 0;
+  var cur_line_id = "";
+  var cur_cell_id = "";
+  function returnValue(values) {
+    var sheets = [];                                                                                                          // Défini une variable de type tableau nommée "sheets".
+    var j = 1;                                                                                                                // Défini une variable de type nombre nommée "j" et la met à 1.
+    sheets[0] = values[0].value;                                                                                              // Remplis la première valeur de "sheets" avec le nom du PDF
+    for (var i=1; i< values.length;i++) {                                                                                     // Boucle tant que toutes les cases à cocher n'ont pas été parcourues
+      if (values[i].checked) {                                                                                                  // Vérifie si la case à cocher actuelle est cochée. Si oui :
+        sheets[j] = values[i].value;                                                                                              // Remplis "sheets[j]" Avec la valeur de la case à cocher actuelle.
+        j++;                                                                                                                      // Augmente de 1 la valeur de "j"
+      }
+    }
+    if (j > 1) {                                                                                                              // Si au moins 1 boite à cochée a été cochée, alors :
+      google.script.run.exportToPDF(sheets);                                                                                    // Appel la fonction "exportToPDF" pour exporter la (les) bonne(s) feuille(s) en PDF
+      google.script.host.close();                                                                                               // Ferme la fenêtre pop-up
+    }
+  }
+    
+  function createElem(value, text, new_line) {
+    var formSheet = document.getElementById("sheets");                                                                        // Récupère la balise avec l'ID "sheets" dans la page HTML
+    if (new_line === true) {                                                                                                  // Vérifie si new_line est vrai. Si oui :
+      var line = document.createElement("tr");                                                                                  // Créé une balise "tr"
+      line.setAttribute("id", "line" + id_line);                                                                                // Défini l'attribut "id" de la balise à "line" + id_line
+      cur_line_id = "line" + id_line;                                                                                           // Défini "cur_line_id" avec la valeur "line" + id_line
+      document.getElementById("table").appendChild(line);                                                                       // Récupère la balise avec l'id "table" et y ajoute avant la balise fermante la balise "tr" stockée dans line
+      id_line++;                                                                                                                // Augmente de 1 la valeur de id_line
+    }
+    var cell = document.createElement("td");                                                                                  // Créé une balise "td"
+    cell.setAttribute("id", "cell"+ id_cell);                                                                                 // Défini l'attribut "id" de la balise à "cell" + id_cell
+    cur_cell_id = "cell"+ id_cell;                                                                                            // Défini "cur_cell_id" avec la valeur "cell" + id_line
+    document.getElementById(cur_line_id).appendChild(cell);                                                                   // Récupère la balise avec l'id "cur_line_id" et y ajoute avant la balise fermante la balise "td" stockée dans cell
+    id_cell++;                                                                                                                // Augmente de 1 la valeur de id_cell
+    
+    var x = document.createElement("input");                                                                                  // Créé une balise "input"
+    x.setAttribute("type", "checkbox");                                                                                       // Défini l'attribut "type" de la balise à "checkbox"
+    x.setAttribute("name", "sheet");                                                                                          // Défini l'attribut "name" de la balise à "sheet"
+    x.setAttribute("value", value);                                                                                           // Défini l'attribut "value" de la balise avec la valeur de "value"
+    var text2 = document.createTextNode(text);                                                                                // Défini une variable nommée "text2". C'est une node de texte avec le contenu de "text"
+    document.getElementById(cur_cell_id).appendChild(x);                                                                      // Récupère la balise avec l'id "cur_cell_id" et y ajoute avant la balise fermante la balise "input" stockée dans x
+    document.getElementById(cur_cell_id).appendChild(text2);                                                                  // Récupère la balise avec l'id "cur_line_id" et y ajoute avant la balise fermante la node de texte stockée dans text2
+  }
+    
+  function createInputArea(name) {
+    if (name != "")                                                                                                           // Vérifie si "name" n'est pas vide. Si oui :
+      var inp = document.getElementById("ss_name").value = name;                                                                // Définie l'attribut "value" de la balise avec l'ID "ss_name" avec la valeur de "name"
+  }
+    
+  function createList(list) {
+    createElem("all", "Toutes\t\t", true);                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "all" et pour texte "Toutes\t" (\t est une tabulation)
+    var num_elem = 1;                                                                                                         // Défini la variable de type nombre nommée "num_elem" et la met à 2.
+    for (var i = 0; i < list.length; i++) {                                                                                   // Boucle tant que toutes les feuilles n'ont pas été parcourue
+    if (num_elem % 5 == 0) {                                                                                                  // Vérifie si le restde de la division par 5 est 0. Si oui :
+      createElem(i, list[i], true);                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i" et pour texte list[i] + "\n" (\n est un saut de ligne)
+    }
+    else                                                                                                                     // sinon
+      createElem(i, list[i], false);                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i" et pour texte list[i] + "\t" (\t est une tabulation)
+    num_elem++;
+    }
+  }
+  google.script.run.withSuccessHandler(createInputArea).getName();                                                            // Execute la fonction "createInputZone" si la fonction "getName" réussie
+  google.script.run.withSuccessHandler(createList).getListSheet();                                                            // Execute la fonction "createList" si la fonction "getListSheet" réussie
+</script>
+
+<!-- Fait par JAUNET Nathan. Commencé le 26 septembre 2016 et terminé le 27 septembre 2016 -->
+<!-- Dernière mise à jour le 29/09/2016 -->
