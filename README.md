@@ -10,7 +10,7 @@ To use this add-on, select the menu item **ExportToPDF > Export To PDF**
 When the window opens, enter the name of the PDF to generate (by default it is the name of the document). Then select all the sheets to export (if you select "All", you do not need to check the other sheet) and then click "Export" (Please note, you must select at least one sheet).
 After a few seconds you should see a window open showing where is the PDF and it's name.
 
-Started September 26, 2016 and ended September 27, 2016. **Last Update on 09/28/2016**
+Started September 26, 2016 and ended September 27, 2016. **Last Update on 09/29/2016**
 
 If you want to contribute to the project, you can make changes or corrections to the project and offer me. If they are accepted, you will be added to the file contributors.
 It would initially turn this "bound script" in "standalone script" (to make it more easily installable) and why not improve desing HTML pages
