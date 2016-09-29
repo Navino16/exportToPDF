@@ -17,10 +17,7 @@ function start() {
 function getListSheet() {
   var tab = [];                                                                                                 // Defined an array variable named "tab".
   for (var i = 0; i < sheets.length; i++) {                                                                     // Loop until all the sheets have not been covered
-    if (i < 10)                                                                                                   // Checks if "i" is smaller than 10. If yes :
-      tab[i] = "Sheet 0" + (i + 1);                                                                                 // Set in "tab[i]" the number of the sheet with a "0" before
-    else                                                                                                          // else
-      tab[i] = "Sheet " + (i + 1);                                                                                  // Set in tab[i] the number of the sheet
+    tab[i] = sheets[i].getName();                                                                                  // Set in tab[i] the name of current sheet
   }
   return (tab);                                                                                                 // Return the array at the previous function
 }
@@ -30,4 +27,4 @@ function getName() {
 }
 
 // Made by JAUNET Nathan. Started September 26, 2016 and ended September 27, 2016
-// Last Update on 09/27/16
+// Last Update on 09/29/16
