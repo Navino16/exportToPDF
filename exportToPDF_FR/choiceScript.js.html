@@ -52,7 +52,7 @@
     
   function createList(list) {
     createElem("all", "Toutes", true);                                                                                        // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "all" et pour texte "Toutes"
-    var num_elem = 1;                                                                                                         // Défini la variable de type nombre nommée "num_elem" et la met à 2.
+    var num_elem = 1;                                                                                                         // Défini la variable de type nombre nommée "num_elem" et la met à 1.
     for (var i = 0; i < list.length; i++) {                                                                                   // Boucle tant que toutes les feuilles n'ont pas été parcourue
     if (num_elem % 5 == 0) {                                                                                                  // Vérifie si le restde de la division par 5 est 0. Si oui :
       createElem(i, list[i], true);                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i" et pour texte list[i]
