@@ -22,7 +22,6 @@
   }
     
   function createElem(value, text, new_line) {
-    var formSheet = document.getElementById("sheets");                                                                        // Récupère la balise avec l'ID "sheets" dans la page HTML
     if (new_line === true) {                                                                                                  // Vérifie si new_line est vrai. Si oui :
       var line = document.createElement("tr");                                                                                  // Créé une balise "tr"
       line.setAttribute("id", "line" + id_line);                                                                                // Défini l'attribut "id" de la balise à "line" + id_line
