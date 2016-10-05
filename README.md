@@ -10,7 +10,7 @@ To use this add-on, select the menu item **ExportToPDF > Export To PDF**
 When the window opens, enter the name of the PDF to generate (by default it is the name of the document). Then select all the sheets to export (if you select "All", you do not need to check the other sheet) and then click "Export" (Please note, you must select at least one sheet).
 After a few seconds you should see a window open showing where is the PDF and it's name.
 
-Started September 26, 2016 and ended September 27, 2016. **Last Update on 09/29/2016**
+Started September 26, 2016 and ended September 27, 2016. **Last Update on 10/05/2016**
 
 If you want to contribute to the project, you can make changes or corrections to the project and offer me. If they are accepted, you will be added to the file contributors.
 
@@ -24,6 +24,6 @@ Pour l’ajouter à un “Google sheet”, ouvrez le et sélectionnez le menu **
 
 Pour utiliser ce module, sélectionnez le menu **Exporter en PDF > Exporter en PDF**. Lorsque la fenêtre apparaît, entrez le nom du fichier PDF a générer (par défaut, il s’agit du nom du “Google sheet”). Sélectionnez ensuite toutes les feuilles à exporter (si vous sélectionnez "All", vous n’avez pas besoin de cocher les autres feuilles), puis cliquez sur "Exporter" (Attention, vous devez sélectionner au moins une feuille). Après quelques secondes, vous devriez voir une fenêtre s’ouvrir indiquant où est le PDF et son nom.
 
-Commencé le 26 Septembre 2016 et terminée le 27 Septembre 2016. **Dernière mise à jour le 29.09.2016.**
+Commencé le 26 Septembre 2016 et terminée le 27 Septembre 2016. **Dernière mise à jour le 05.10.2016.**
 
 Si vous souhaitez contribuer au projet, vous pouvez apporter des modifications ou des corrections au projet et me les soumettre. Si elles sont acceptées, vous serez ajouté dans la liste des contributeurs.
