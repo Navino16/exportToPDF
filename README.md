@@ -13,7 +13,6 @@ After a few seconds you should see a window open showing where is the PDF and it
 Started September 26, 2016 and ended September 27, 2016. **Last Update on 09/29/2016**
 
 If you want to contribute to the project, you can make changes or corrections to the project and offer me. If they are accepted, you will be added to the file contributors.
-It would initially turn this "bound script" in "standalone script" (to make it more easily installable) and why not improve desing HTML pages
 
 # exportToPDF - Francais
 
@@ -28,4 +27,3 @@ Pour utiliser ce module, sélectionnez le menu **Exporter en PDF > Exporter en P
 Commencé le 26 Septembre 2016 et terminée le 27 Septembre 2016. **Dernière mise à jour le 29.09.2016.**
 
 Si vous souhaitez contribuer au projet, vous pouvez apporter des modifications ou des corrections au projet et me les soumettre. Si elles sont acceptées, vous serez ajouté dans la liste des contributeurs.
-Dans un premier temps il faudrait transformer ce script en script "standalone" (pour le rendre plus facilement installable) et pourquoi  pas améliorer le design des pages HTML.
