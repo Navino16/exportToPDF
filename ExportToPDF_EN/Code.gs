@@ -1,13 +1,21 @@
-var ss = SpreadsheetApp.getActiveSpreadsheet();                                                                 // Get active Spreadsheet
-var sheets = ss.getSheets();                                                                                    // Get all the sheets of the SpreadSheet
-var ui = SpreadsheetApp.getUi();                                                                                // Gets the spreadsheet user interface
+try {                                                                                                           // Try following code :
+  var ss = SpreadsheetApp.getActiveSpreadsheet();                                                                 // Get active Spreadsheet
+  var sheets = ss.getSheets();                                                                                    // Get all the sheets in the SpreadSheet
+  var ui = SpreadsheetApp.getUi();                                                                                // Get the spreadsheet user interface
+} catch(e) {                                                                                                    // If something go wrong :
+  Logger.log(e.message);                                                                                        // Prompt the error message in log
+}
+
+function onInstall() {                                                                                          // When the script is installed
+  onOpen();                                                                                                     // Call the function "onOpen"
+}
 
 function onOpen() {                                                                                             // When the spreadsheet is opened
   start();                                                                                                      // Call the function "start" to start exporting
 }
 
 function start() {
-  ui.createMenu('exportToPDF')                                                                                  // Create menu named "ExportToPDF"
+  SpreadsheetApp.getUi().createAddonMenu()                                                                      // Get the Spreadsheet user interface and create a sub-menu in Add-on menu
   .addItem('Export To PDF', 'choice')                                                                           // Add item named "Export To PDF" and call the function "choice"
   .addSeparator()                                                                                               // Add a separator
   .addItem('Help', 'help')                                                                                      // Add item named "Help" and call the function "help"
@@ -27,4 +35,4 @@ function getName() {
 }
 
 // Made by JAUNET Nathan. Started September 26, 2016 and ended September 27, 2016
-// Last Update on 09/29/16
+// Last Update on 10/05/16
