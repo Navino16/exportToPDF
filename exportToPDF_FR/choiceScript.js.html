@@ -21,7 +21,7 @@
     }
   }
     
-  function createElem(value, text, new_line) {
+  function createElem(value, text, new_line, funct) {
     if (new_line === true) {                                                                                                  // Vérifie si new_line est vrai. Si oui :
       var line = document.createElement("tr");                                                                                  // Créé une balise "tr"
       line.setAttribute("id", "line" + id_line);                                                                                // Défini l'attribut "id" de la balise à "line" + id_line
@@ -38,6 +38,7 @@
     var x = document.createElement("input");                                                                                  // Créé une balise "input"
     x.setAttribute("type", "checkbox");                                                                                       // Défini l'attribut "type" de la balise à "checkbox"
     x.setAttribute("name", "sheet");                                                                                          // Défini l'attribut "name" de la balise à "sheet"
+    x.setAttribute("onClick", funct);                                                                                         // Défini l'attribut "onClick" de la balise avec la valeur de funct
     x.setAttribute("value", value);                                                                                           // Défini l'attribut "value" de la balise avec la valeur de "value"
     var text2 = document.createTextNode(text);                                                                                // Défini une variable nommée "text2". C'est une node de texte avec le contenu de "text"
     document.getElementById(cur_cell_id).appendChild(x);                                                                      // Récupère la balise avec l'id "cur_cell_id" et y ajoute avant la balise fermante la balise "input" stockée dans x
@@ -48,17 +49,38 @@
     if (name != "")                                                                                                           // Vérifie si "name" n'est pas vide. Si oui :
       var inp = document.getElementById("ss_name").value = name;                                                                // Définie l'attribut "value" de la balise avec l'ID "ss_name" avec la valeur de "name"
   }
-    
+  
+  function toggle(source) {
+    checkboxes = document.getElementsByName("sheet");                                                                         // Récupère toutes les balises ayant pour nom "sheet"
+    for(var i = 1, n = checkboxes.length; i < n; i++) {                                                                       // Parcours la liste des balises récupérée
+      checkboxes[i].checked = source.checked;                                                                                   // Change l'attribut de la balise à l'index i avec la valeur de la balise "Toutes"
+    }
+  }
+  
+  function checkAll() {
+    checkboxes = document.getElementsByName("sheet");                                                                         // Récupère toutes les balises ayant pour nom "sheet"
+    for(var i = 2, n = checkboxes.length; i < n; i++) {                                                                       // Parcours la liste des balises récupérée
+      if (checkboxes[i].checked == false)                                                                                       // Si une balise n'est pas cochée, alors :
+        break;                                                                                                                    // Arête la boucle
+    }
+    if (i == n) {                                                                                                             // Si le nombre de balises parcouru est égal au nombres de balises récupérée, alors :
+      checkboxes[1].checked = true;                                                                                             // Coche la checkbox "Toutes"
+    }
+    else {                                                                                                                    // Sinon :
+      checkboxes[1].checked = false;                                                                                            // Décoche la checkbox "Toutes"
+    }
+  }
+  
   function createList(list) {
-    createElem("all", "Toutes", true);                                                                                        // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "all" et pour texte "Toutes"
+    createElem("all", "Toutes", true, "toggle(this)");                                                                        // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "all", pour texte "Toute" et pour fonction au clique "toggle(this)"
     var num_elem = 1;                                                                                                         // Défini la variable de type nombre nommée "num_elem" et la met à 1.
     for (var i = 0; i < list.length; i++) {                                                                                   // Boucle tant que toutes les feuilles n'ont pas été parcourue
     if (num_elem % 5 == 0) {                                                                                                  // Vérifie si le restde de la division par 5 est 0. Si oui :
-      createElem(i, list[i], true);                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i" et pour texte list[i]
+      createElem(i, list[i], true, "checkAll()");                                                                               // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i", pour texte list[i] et pour fonction au clique "checkAll()"
     }
     else                                                                                                                      // sinon
-      createElem(i, list[i], false);                                                                                            // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i" et pour texte list[i]
-    num_elem++;
+      createElem(i, list[i], false, "checkAll()");                                                                              // Appel la fonction "createElem" pour créer une nouvelle balise input avec pour valueur "i", pour texte list[i] et pour fonction au clique "checkAll()"
+    num_elem++;                                                                                                                 // Augmente la valeur de num_elem de 1
     }
   }
   google.script.run.withSuccessHandler(createInputArea).getName();                                                            // Execute la fonction "createInputZone" si la fonction "getName" réussie
@@ -66,4 +88,4 @@
 </script>
 
 <!-- Fait par JAUNET Nathan. Commencé le 26 septembre 2016 et terminé le 27 septembre 2016 -->
-<!-- Dernière mise à jour le 05/10/2016 -->
+<!-- Dernière mise à jour le 14/11/2016 -->
