@@ -8,6 +8,6 @@ Pour l’ajouter à un “Google sheet”, ouvrez le et sélectionnez le menu **
 
 Pour utiliser ce module, sélectionnez le menu **Exporter en PDF > Exporter en PDF**. Lorsque la fenêtre apparaît, entrez le nom du fichier PDF a générer (par défaut, il s’agit du nom du “Google sheet”). Sélectionnez ensuite toutes les feuilles à exporter (si vous sélectionnez "All", vous n’avez pas besoin de cocher les autres feuilles), puis cliquez sur "Exporter" (Attention, vous devez sélectionner au moins une feuille). Après quelques secondes, vous devriez voir une fenêtre s’ouvrir indiquant où est le PDF et son nom.
 
-Commencé le 26 Septembre 2016 et terminée le 27 Septembre 2016. **Dernière mise à jour le 05.10.2016.**
+Commencé le 26 Septembre 2016 et terminée le 27 Septembre 2016. **Dernière mise à jour le 24.11.2016.**
 
 Si vous souhaitez contribuer au projet, vous pouvez apporter des modifications ou des corrections au projet et me les soumettre. Si elles sont acceptées, vous serez ajouté dans la liste des contributeurs.
