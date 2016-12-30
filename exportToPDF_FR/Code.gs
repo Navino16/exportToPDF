@@ -15,11 +15,24 @@ function onOpen() {                                                             
 }
 
 function start() {
-  var menu = SpreadsheetApp.getUi().createAddonMenu()                                                           // Récupère l'interface utilistaeur du document et y créer un sous-menu dans le menu add-on
+  SpreadsheetApp.getUi().createAddonMenu()                                                                      // Récupère l'interface utilistaeur du document et y créer un sous-menu dans le menu add-on
   .addItem('Exporter en PDF', 'choice')                                                                         // Ajoute un objet nommé "Exporter en PDF" et qui appelle la fonction "choice" lorsque l'on clique dessus
   .addSeparator()                                                                                               // Ajoute un séparateur
   .addItem('Aide', 'help')                                                                                      // Ajoute un objet nommé "Aide" et qui appelle la fonction "help" lorsque l'on clique dessus
   .addToUi();                                                                                                   // Ajoute le menu à l'interface utilisateur
+}
+
+function naturalCompare(a, b) {                                                                                 // Fonction de trie où les suites de nombres sont traités en un nombre unique et non pas des nombres différents
+  var ax = [], bx = [];
+  a.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { ax.push([$1 || Infinity, $2 || ""]) });
+  b.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { bx.push([$1 || Infinity, $2 || ""]) });
+  while(ax.length && bx.length) {
+    var an = ax.shift();
+    var bn = bx.shift();
+    var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
+    if(nn) return nn;
+  }
+  return ax.length - bx.length;
 }
 
 function getListSheet() {
@@ -27,6 +40,7 @@ function getListSheet() {
   for (var i = 0; i < sheets.length; i++) {                                                                     // Boucle tant que toutes les feuilles n'ont pas été parcourue
     tab[i] = sheets[i].getName();                                                                               // Stock dans tab[i] le nom de la feuille actuelle
   }
+  tab.sort(naturalCompare);                                                                                     // Trie le tableau avec la fonction de trie "naturalCompare"
   return (tab);                                                                                                 // Retourne le tableau à la fonction précédente
 }
 
@@ -35,4 +49,4 @@ function getName() {
 }
 
 // Fait par JAUNET Nathan. Commencé le 26 septembre 2016 et terminé le 27 septembre 2016
-// Dernière mise à jour le 05/10/2016
+// Dernière mise à jour le 14/11/2016
