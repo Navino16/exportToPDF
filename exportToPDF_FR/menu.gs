@@ -7,7 +7,7 @@ function choice() {
 }
 
 function help() {
-  var html = HtmlService.createTemplateFromFile('help').evaluate()                                           // Création de la page HTML "help"
+  var html = HtmlService.createTemplateFromFile('help').evaluate()                                           // Création de la page HTML "aide"
   .setSandboxMode(HtmlService.SandboxMode.NATIVE)                                                            // Restrictions pour la page HTML (protège l'utilisateur)
   .setTitle('Aide')                                                                                          // Définition du nom de la page
   .setWidth(300);                                                                                            // Définition de sa largeur
@@ -15,4 +15,4 @@ function help() {
 }
 
 // Fait par JAUNET Nathan. Commencé le 26 septembre 2016 et terminé le 27 septembre 2016
-// Dernière mise à jour le 05/10/2016
+// Dernière mise à jour le 14/11/2016
